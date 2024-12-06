@@ -20,17 +20,17 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
 
     const callSpecificWsUri = `${process.env.WS_SERVER_URI}/${callId}`;
 
+    console.log("WS-URI-COMPLETE", callSpecificWsUri);
+
+    const connect = response.connect();
+    connect.stream({
+      url: callSpecificWsUri, // Replace with your actual ngrok WebSocket URL
+    })
+
     /*const callState = createCallState(callId);
 
     callState.messages = [...initialMessages];
     callState.currentCall = response;*/
-
-    console.log("WS-URI", callSpecificWsUri, 'TEST');
-
-    const start = response.start();
-    start.stream({
-      url: 'ws://34.169.16.189:9000', // Replace with your actual ngrok WebSocket URL
-    })
 
     /*callState.recognizeStream = speechClient
       .streamingRecognize(SPEECH_REQUEST)
