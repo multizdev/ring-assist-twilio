@@ -25,7 +25,7 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
     callState.messages = [...initialMessages];
     callState.currentCall = response;*/
 
-    console.log("WS-URI", callSpecificWsUri);
+    console.log("WS-URI", callSpecificWsUri, 'TEST');
 
     const start = response.start();
     start.stream({
