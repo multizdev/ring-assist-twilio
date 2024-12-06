@@ -25,7 +25,8 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
     callState.messages = [...initialMessages];
     callState.currentCall = response;*/
 
-    response.connect().stream({
+    const connect = response.connect();
+    connect.stream({
       url: callSpecificWsUri, // Replace with your actual ngrok WebSocket URL
     })
 
