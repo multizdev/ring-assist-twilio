@@ -7,6 +7,10 @@ function setupWebSocket(server: Server) {
   console.log('Starting websocket server');
   const wss: WebSocketServer = new WebSocketServer({ server });
 
+  wss.on("error", (err) => {
+    console.log("There was a problem with websocket server", err.message);
+  })
+
   wss.on('connection', (ws: any, request) => {
     const callId = request.url?.split('/').pop();
 
