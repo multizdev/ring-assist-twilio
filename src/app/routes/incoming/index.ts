@@ -14,11 +14,11 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
   const callId = req.body.CallSid;
 
   try {
+    const response = new Twilio.twiml.VoiceResponse();
+
     const callSpecificWsUri = `${process.env.WS_SERVER_URI}/${callId}`;
 
     const callState = createCallState(callId);
-
-    const response = new Twilio.twiml.VoiceResponse();
 
     callState.messages = [...initialMessages];
     callState.currentCall = response;
