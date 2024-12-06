@@ -25,8 +25,7 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
     callState.messages = [...initialMessages];
     callState.currentCall = response;*/
 
-    const connect = response.connect();
-    connect.stream({
+    response.connect().stream({
       url: callSpecificWsUri, // Replace with your actual ngrok WebSocket URL
     })
 
@@ -40,6 +39,8 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
         console.log('Recognize Stream Ended: ', callId);
         void resetCallState(callId)
       });*/
+
+    response.say("I say this after websocket connection ends");
 
     // Respond with the TwiML (XML format)
     res.type('text/xml');
