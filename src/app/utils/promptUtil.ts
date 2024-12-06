@@ -6,12 +6,6 @@ import {
 } from '#app/ai/swank/swankDetails.js';*/
 // @ts-ignore
 import { ChatCompletionMessageParam } from 'openai/resources';
-// @ts-ignore
-import { CallPlayback } from '@signalwire/realtime-api/dist/realtime-api/src/voice/CallPlayback';
-import {
-  handlePlaybackEnd,
-  handlePlaybackStart,
-} from '#app/controllers/ttsControler.js';
 
 /*const PROMPT = SWANK_ORDER_PROMPT.replace(
   /{user_json}/g,
@@ -37,19 +31,4 @@ const initialMessages: ChatCompletionMessageParam[] = [
   { role: 'system', content: PROMPT },
 ];
 
-const getBaseConfig = (callId: string) => {
-  return {
-    language: 'en-US',
-    voice: 'openai.nova',
-    listen: {
-      onStarted: (playback: CallPlayback) => {
-        handlePlaybackStart(callId, playback);
-      },
-      onEnded: () => {
-        handlePlaybackEnd(callId);
-      },
-    },
-  };
-};
-
-export { PROMPT, initialMessages, getBaseConfig };
+export { PROMPT, initialMessages };
