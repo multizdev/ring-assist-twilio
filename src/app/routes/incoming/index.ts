@@ -2,11 +2,11 @@ import { Router, Request, Response } from 'express';
 
 import Twilio from 'twilio';
 
-import { createCallState, resetCallState } from '#app/state/callManager.js';
+/*import { createCallState, resetCallState } from '#app/state/callManager.js';
 import { initialMessages } from '#app/utils/promptUtil.js';
 import speechClient from '#app/services/speechService.js';
 import { SPEECH_REQUEST } from '#app/config/config.mjs';
-import { handleSpeechData } from '#app/controllers/callController.js';
+import { handleSpeechData } from '#app/controllers/callController.js';*/
 
 const incomingRouter = Router();
 
@@ -20,17 +20,17 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
 
     const callSpecificWsUri = `${process.env.WS_SERVER_URI}/${callId}`;
 
-    const callState = createCallState(callId);
+    /*const callState = createCallState(callId);
 
     callState.messages = [...initialMessages];
-    callState.currentCall = response;
+    callState.currentCall = response;*/
 
     const connect = response.connect();
     connect.stream({
       url: callSpecificWsUri, // Replace with your actual ngrok WebSocket URL
     })
 
-    callState.recognizeStream = speechClient
+    /*callState.recognizeStream = speechClient
       .streamingRecognize(SPEECH_REQUEST)
       .on('error', (error) => {
         console.error('Error in Speech-to-Text:', error);
@@ -39,7 +39,7 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
       .on('end', () => {
         console.log('Recognize Stream Ended: ', callId);
         void resetCallState(callId)
-      });
+      });*/
 
     // Respond with the TwiML (XML format)
     res.type('text/xml');
