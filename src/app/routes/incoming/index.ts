@@ -29,7 +29,7 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
 
     const start = response.start();
     start.stream({
-      url: callSpecificWsUri, // Replace with your actual ngrok WebSocket URL
+      url: 'ws://34.169.16.189:9000', // Replace with your actual ngrok WebSocket URL
     })
 
     /*callState.recognizeStream = speechClient
