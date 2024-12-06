@@ -18,8 +18,6 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
   try {
     const response = new Twilio.twiml.VoiceResponse();
 
-    response.say("HELLO, I am working now");
-
     const callSpecificWsUri = `${process.env.WS_SERVER_URI}/${callId}`;
 
     const callState = createCallState(callId);
