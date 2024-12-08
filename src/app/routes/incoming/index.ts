@@ -26,9 +26,8 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
 
     connect.stream({
       url: callSpecificWsUri,
-      statusCallbackMethod: 'POST',
-      statusCallback: `${process.env.WS_SERVER_URI}/api/incoming/`
-
+      /*statusCallbackMethod: 'POST',
+      statusCallback: `${process.env.WS_SERVER_URI}/api/incoming/`*/
     })
 
     console.log('rsp', response.toString());
