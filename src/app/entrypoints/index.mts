@@ -28,7 +28,7 @@ if (process.env.ENVIRONMENT !== 'dev') {
   // Path to your SSL certificate and private key
   const options = {
     key: readFileSync('/home/hariskamran1999_hk/ssl-certificate/certificate.key'),
-    cert: readFileSync('/home/hariskamran1999_hk/ssl-certificate/certificate.crt'),
+    cert: readFileSync('/home/hariskamran1999_hk/ssl-certificate/certificate.cert'),
   };
 
   server = https.createServer(options, app);
