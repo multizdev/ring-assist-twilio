@@ -25,6 +25,8 @@ app.use('/api/incoming', incomingRouter);
 let server;
 
 if (process.env.ENVIRONMENT !== 'dev') {
+  console.log("DEPLOYED ENV");
+
   // Path to your SSL certificate and private key
   const options = {
     key: readFileSync('/home/hariskamran1999_hk/ssl-certificate/certificate.key'),
@@ -33,6 +35,7 @@ if (process.env.ENVIRONMENT !== 'dev') {
 
   server = https.createServer(options, app);
 } else {
+  console.log("LOCAL ENV");
   server = http.createServer(app);
 }
 
