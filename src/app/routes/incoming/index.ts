@@ -25,7 +25,10 @@ incomingRouter.post('/answer-call',(req: Request, res: Response) => {
     const connect = response.connect();
 
     connect.stream({
-      url: callSpecificWsUri, // Replace with your actual ngrok WebSocket URL
+      url: callSpecificWsUri,
+      statusCallbackMethod: 'POST',
+      statusCallback: `${process.env.WS_SERVER_URI}/api/incoming/`
+
     })
 
     console.log('rsp', response.toString());
