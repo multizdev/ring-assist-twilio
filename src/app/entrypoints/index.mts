@@ -27,9 +27,9 @@ let server;
 if (process.env.ENVIRONMENT !== 'dev') {
   // Path to your SSL certificate and private key
   const options = {
-    key: readFileSync('/etc/ssl/private/ringassist_io.key'),
-    cert: readFileSync('/etc/ssl/certs/ringassist_io.crt'),
-    ca: readFileSync('/etc/ssl/certs/ringassist_io.ca-bundle')  // Chain file, if needed
+    key: readFileSync('~/ssl-certificate/ringassist_io.key'),
+    cert: readFileSync('~/ssl-certificate/ringassist_io.crt'),
+    ca: readFileSync('~/ssl-certificate/ringassist_io.ca-bundle')  // Chain file, if needed
   };
 
   server = https.createServer(options, app);
