@@ -4,8 +4,8 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import http from 'http';
-/*import https from 'https';
-import { readFileSync } from 'fs';*/
+import https from 'https';
+import { readFileSync } from 'fs';
 
 import { PORT } from '#app/config/config.mjs';
 import { setupWebSocket } from '#app/services/websocketService.js';
@@ -24,7 +24,7 @@ app.use('/api/incoming', incomingRouter);
 
 let server;
 
-/*if (process.env.ENVIRONMENT !== 'dev') {
+if (process.env.ENVIRONMENT !== 'dev') {
   console.log("DEPLOYED ENV");
 
   // Path to your SSL certificate and private key
@@ -37,10 +37,7 @@ let server;
 } else {
   console.log("LOCAL ENV");
   server = http.createServer(app);
-}*/
-
-console.log("LOCAL ENV");
-server = http.createServer(app);
+}
 
 // const server: Server = createServer(app);
 
