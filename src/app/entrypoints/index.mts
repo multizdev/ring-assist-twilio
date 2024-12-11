@@ -3,9 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import http from 'http';
-import https from 'https';
-import { readFileSync } from 'fs';
+import { createServer, Server } from 'http';
 
 import { PORT } from '#app/config/config.mjs';
 import { setupWebSocket } from '#app/services/websocketService.js';
@@ -22,24 +20,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use('/api/incoming', incomingRouter);
 
-let server;
-
-if (process.env.ENVIRONMENT !== 'dev') {
-  console.log("DEPLOYED ENV");
-
-  // Path to your SSL certificate and private key
-  const options = {
-    key: readFileSync('/home/hariskamran1999_hk/ssl-certificate/certificate.key'),
-    cert: readFileSync('/home/hariskamran1999_hk/ssl-certificate/certificate.cert'),
-  };
-
-  server = https.createServer(options, app);
-} else {
-  console.log("LOCAL ENV");
-  server = http.createServer(app);
-}
-
-// const server: Server = createServer(app);
+const server: Server = createServer(app);
 
 server.listen(PORT, async () => {
   console.log(`Server is listening on port ${PORT}`);
