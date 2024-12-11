@@ -10,7 +10,9 @@ import { handleSpeechData } from '#app/controllers/callController.js';*/
 
 const incomingRouter: Router = Router();
 
-incomingRouter.get('/answer-call', (req: any, res: any) => {
+incomingRouter.get('/issue', (req: any, res: any) => {
+  console.log("ISSUE", req.body);
+
   return res.json({
     test: JSON.stringify(req.body),
   });
