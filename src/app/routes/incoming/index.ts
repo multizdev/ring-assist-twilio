@@ -8,7 +8,13 @@ import speechClient from '#app/services/speechService.js';
 import { SPEECH_REQUEST } from '#app/config/config.mjs';
 import { handleSpeechData } from '#app/controllers/callController.js';*/
 
-const incomingRouter = Router();
+const incomingRouter: Router = Router();
+
+incomingRouter.get('/answer-call', (req: any, res: any) => {
+  return res.json({
+    test: JSON.stringify(req.body),
+  });
+});
 
 incomingRouter.post('/answer-call',(req: Request, res: Response) => {
   const callId = req.body.CallSid;
